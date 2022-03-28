@@ -62,7 +62,7 @@ function mudaCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#ABDEE6';
-            alert('cor1');
+            console.log('cor1');
         }
 
     if((x >= xCor2) 
@@ -70,7 +70,7 @@ function mudaCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#CBAACB';
-            alert('cor2');
+            console.log('cor2');
         }
 
     if((x >= xCor3) 
@@ -78,7 +78,7 @@ function mudaCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#FFFFB5';
-            alert('cor3');
+            console.log('cor3');
         }
 
     if((x >= xCor4) 
@@ -86,14 +86,14 @@ function mudaCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#FFCCB6';
-            alert('cor4');
+            console.log('cor4');
         }
     if((x >= xCor5) 
         && (x < xCor5 + larguraPaleta)
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#F3B0C3';
-            alert('cor5');
+            console.log('cor5');
         }        
 }
 
