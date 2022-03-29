@@ -26,11 +26,13 @@ function desenharPaletaDeCores() {
 }
 
 function desenharRaios() {
-    desenharCirculo(80, 25, 5, '#D4F0F0');
-    desenharCirculo(240, 25, 10, '#D4F0F0');
-    desenharCirculo(400, 25, 15, '#D4F0F0');
-    desenharCirculo(560, 25, 20, '#D4F0F0');
-    desenharCirculo(720, 25, 24, '#D4F0F0');
+    desenharCirculo(80, 575, 5, '#55CBCD');
+    desenharCirculo(240, 575, 10, '#55CBCD');
+    desenharCirculo(400, 575, 15, '#55CBCD');
+    desenharCirculo(560, 575, 20, '#55CBCD');
+    desenharCirculo(720, 575, 24, '#55CBCD');
+    pincel.strokeStyle = '#8FCACA';
+    pincel.strokeRect(0,550,800,50)
     
 }
 
@@ -39,8 +41,13 @@ function lidarComMovimentoDoMouse(evento) {
     var x = evento.pageX - tela.offsetLeft;
     var y = evento.pageY - tela.offsetTop;
 
-    if((x >= 0) && (x < (5 * larguraPaleta)) 
+    if((x >= 0) && (x < 800) 
         && (y > 0) && (y < alturaPaleta)) {
+            desenha = false;
+        }
+
+    if((x >= 0) && (x < 800)
+        && (y > 550) && (y < 600)) {
             desenha = false;
         }
 
@@ -70,7 +77,7 @@ function mudarCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#ABDEE6';
-            console.log('cor1');
+            console.log('Cor = #ABDEE6');
         }
 
     if((x >= xCor2) 
@@ -78,7 +85,7 @@ function mudarCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#CBAACB';
-            console.log('cor2');
+            console.log('Cor = #CBAACB');
         }
 
     if((x >= xCor3) 
@@ -86,7 +93,7 @@ function mudarCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#FFFFB5';
-            console.log('cor3');
+            console.log('Cor = #FFFFB5');
         }
 
     if((x >= xCor4) 
@@ -94,14 +101,14 @@ function mudarCor(evento) {
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#FFCCB6';
-            console.log('cor4');
+            console.log('Cor = #FFCCB6');
         }
     if((x >= xCor5) 
         && (x < xCor5 + larguraPaleta)
         && (y >= yQuadrados)
         && (y < alturaPaleta)) {
             corAtual = '#F3B0C3';
-            console.log('cor5');
+            console.log('Cor = #F3B0C3');
         }        
 }
 
@@ -111,40 +118,40 @@ function mudarRaio(evento) {
 
     if((xRaio >= 75) 
     && (xRaio <= 85)
-    && (yRaio >= 20)
-    && (yRaio <= 30)) {
+    && (yRaio >= 570)
+    && (yRaio <= 580)) {
         raio = 5;
         console.log('Raio = 5');
     }
 
     if((xRaio >= 230) 
     && (xRaio <= 250)
-    && (yRaio >= 15)
-    && (yRaio <= 35)) {
+    && (yRaio >= 565)
+    && (yRaio <= 585)) {
         raio = 10;
         console.log('Raio = 10');
     }
 
     if((xRaio >= 385) 
     && (xRaio <= 415)
-    && (yRaio >= 10)
-    && (yRaio <= 40)) {
+    && (yRaio >= 560)
+    && (yRaio <= 590)) {
         raio = 15;
         console.log('Raio = 15');
     }
 
     if((xRaio >= 540) 
     && (xRaio <= 580)
-    && (yRaio >= 5)
-    && (yRaio <= 45)) {
+    && (yRaio >= 555)
+    && (yRaio <= 595)) {
         raio = 20;
         console.log('Raio = 20');
     }
 
     if((xRaio >= 695) 
     && (xRaio <= 745)
-    && (yRaio >= 0)
-    && (yRaio <= 50)) {
+    && (yRaio >= 550)
+    && (yRaio <= 600)) {
         raio = 25;
         console.log('Raio = 25');
     }
@@ -152,7 +159,7 @@ function mudarRaio(evento) {
 
 function limparTela() {
     pincel.fillStyle = '#D4F0F0';
-    pincel.fillRect(0, 50, 800, 600);
+    pincel.fillRect(0, 50, 800, 500);
     return false;
 }
 
