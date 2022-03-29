@@ -26,8 +26,8 @@ function desenharPaletaDeCores() {
 }
 
 function desenharRaios() {
-    var corRaio = '#55CBCD';
-    desenharQuadrado(0, 550, 800, 500, '#FFCCB6');
+    var corRaio = '#FFFFB5';
+    desenharQuadrado(0, 550, 800, 500, '#CBAACB');
     desenharCirculo(120, 575, 5, corRaio);
     desenharCirculo(240, 575, 10, corRaio);
     desenharCirculo(400, 575, 15, corRaio);
@@ -37,10 +37,24 @@ function desenharRaios() {
     pincel.strokeRect(0,550,800,50) // borda do retângulo inferior
         
 }
+
 function escreverTexto(texto, x, y, cor) {
-    pincel.font='20px Georgia';
+    pincel.font='15px Georgia';
     pincel.fillStyle = cor;
     pincel.fillText(texto, x, y);
+}
+
+function inserirBorracha() {    
+    escreverTexto('BORRACHA', 9, 578, '#FEE1E8');
+    pincel.strokeStyle = 'white';
+    pincel.strokeRect(6,558,90,30)
+}
+
+function inserirElementos() {
+    desenharPaletaDeCores();
+    desenharRaios();
+    inserirBorracha();
+
 }
 
 function lidarComMovimentoDoMouse(evento) {
@@ -117,8 +131,8 @@ function mudarCor(evento) {
             corAtual = '#F3B0C3';
             console.log('Cor = #F3B0C3');
         }
-    if((x >= 10) && (x < 90) 
-        && (y >= 550) && (y<=580)) {
+    if((x >= 6) && (x < 96) 
+        && (y >= 558) && (y<=588)) { //(6,558,90,30)
         corAtual = '#D4F0F0';
         console.log(x, y);
     }
@@ -177,6 +191,7 @@ function limparTela() {
 
 var tela = document.querySelector('canvas');
 var pincel = tela.getContext('2d');
+
 pincel.fillStyle ='#D4F0F0';
 pincel.fillRect(0, 0, 800, 600);
 
@@ -191,15 +206,6 @@ var xCor5 = 640;
 var yQuadrados = 0;
 var alturaPaleta = 50;
 var larguraPaleta = 160;
-
-function inserirElementos() {
-    desenharPaletaDeCores();
-    desenharRaios();
-    escreverTexto('Borracha', 10, 580, 'white');
-    pincel.strokeStyle = 'white';
-    pincel.strokeRect(6,558,90,30)
-}
-
 
 inserirElementos();
 
