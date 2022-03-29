@@ -3,7 +3,7 @@
     var pincel = tela.getContext('2d')
 
     var width = 1000;
-    var height = 700;
+    var height = 600;
 
     var cores = ['#FF6FFF', '#AF69EE', '#29AB87', '#6693F5', '#7fffd4', '#CBAACB', '#FFCCB6', '#F3B0C3', '#FF968A'];
 
