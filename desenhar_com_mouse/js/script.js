@@ -184,6 +184,7 @@ function mudarRaio(evento) {
 }
 
 function limparTela() {
+    desenharPaletaDeCores();
     pincel.fillStyle = '#D4F0F0';
     pincel.fillRect(0, 50, 800, 500);
     return false;
