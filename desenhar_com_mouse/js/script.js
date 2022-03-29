@@ -42,12 +42,12 @@ function lidarComMovimentoDoMouse(evento) {
     var y = evento.pageY - tela.offsetTop;
 
     if((x >= 0) && (x < 800) 
-        && (y > 0) && (y < alturaPaleta)) {
+        && (y > 0) && (y < 55)) {
             desenha = false;
         }
 
     if((x >= 0) && (x < 800)
-        && (y > 550) && (y < 600)) {
+        && (y > 545) && (y < 600)) {
             desenha = false;
         }
 
