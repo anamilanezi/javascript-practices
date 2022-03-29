@@ -5,7 +5,7 @@ function desenhaQuadrado(x, y, largura, altura, cor) {
     pincel.fill();
 }
 
-function desenhaCirculo(x, y, raio, cor) {
+function desenharCirculo(x, y, raio, cor) {
 
     pincel.fillStyle = cor;
     pincel.beginPath();
@@ -14,7 +14,7 @@ function desenhaCirculo(x, y, raio, cor) {
 
 }
 
-function desenhaPaletaDeCores() {
+function desenharPaletaDeCores() {
     
     desenhaQuadrado(xCor1, yQuadrados, larguraPaleta, alturaPaleta, '#ABDEE6');
     desenhaQuadrado(xCor2, yQuadrados, larguraPaleta, alturaPaleta, '#CBAACB');
@@ -25,34 +25,33 @@ function desenhaPaletaDeCores() {
     pincel.strokeRect(0,0,800,50)
 }
 
-function lidaComMovimentoDoMouse(evento) {
+function lidarComMovimentoDoMouse(evento) {
 
     var x = evento.pageX - tela.offsetLeft;
     var y = evento.pageY - tela.offsetTop;
 
-    if((x >= 0) && (x < (3 * alturaPaleta)) 
+    if((x >= 0) && (x < (5 * larguraPaleta)) 
         && (y > 0) && (y < alturaPaleta)) {
             desenha = false;
         }
 
     if(desenha) {
 
-        desenhaCirculo(x, y, 5, corAtual);
+        desenharCirculo(x, y, raio, corAtual);
     }
 }
 
-function habilitaDesenhar() {
+function habilitarDesenho() {
 
     desenha = true;
 }
 
-function desabilitaDesenhar() {
+function desabilitarDesenho() {
 
     desenha = false;
 }
 
-// Para mudar de cor, a pessoa tem que clicar dentro da área do quadrado, e isso muda a corAtual.
-function mudaCor(evento) {  
+function mudarCor(evento) {  
 
     var x = evento.pageX - tela.offsetLeft;   
     var y = evento.pageY - tela.offsetTop;
@@ -97,12 +96,19 @@ function mudaCor(evento) {
         }        
 }
 
+function limparTela() {
+    pincel.fillStyle = '#f0f8ff';
+    pincel.fillRect(0, 50, 800, 600);
+    return false;
+}
+
 var tela = document.querySelector('canvas');
 var pincel = tela.getContext('2d');
-pincel.fillStyle = '#D4F0F0';
+pincel.fillStyle = '#f0f8ff';
 pincel.fillRect(0, 0, 800, 600);
 
 var desenha = false;
+var raio = 5;
 var corAtual = '#ABDEE6';
 var xCor1 = 0;
 var xCor2  = 160;
@@ -113,21 +119,14 @@ var yQuadrados = 0;
 var alturaPaleta = 50;
 var larguraPaleta = 160;
 
+desenharPaletaDeCores(); // mostra os quadrados de seleção de cores
 
-/*
-var xCor1 = 0;
-var xCor2 = 200;
-var xCor3 = 400;
-var xCor4 = 600;
-var xCor5 = 800; 
-*/
+tela.onmousemove = lidarComMovimentoDoMouse;
 
-desenhaPaletaDeCores(); // mostra os quadrados de seleção de cores
+tela.onmousedown = habilitarDesenho;
 
-tela.onmousemove = lidaComMovimentoDoMouse;
+tela.onmouseup = desabilitarDesenho;
 
-tela.onmousedown = habilitaDesenhar;
+tela.onclick = mudarCor;
 
-tela.onmouseup = desabilitaDesenhar;
-
-tela.onclick = mudaCor;
+tela.oncontextmenu = limparTela;
