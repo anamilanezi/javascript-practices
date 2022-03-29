@@ -97,14 +97,14 @@ function mudarCor(evento) {
 }
 
 function limparTela() {
-    pincel.fillStyle = '#f0f8ff';
+    pincel.fillStyle = '#D4F0F0';
     pincel.fillRect(0, 50, 800, 600);
     return false;
 }
 
 var tela = document.querySelector('canvas');
 var pincel = tela.getContext('2d');
-pincel.fillStyle = '#f0f8ff';
+pincel.fillStyle ='#D4F0F0'; //;
 pincel.fillRect(0, 0, 800, 600);
 
 var desenha = false;
