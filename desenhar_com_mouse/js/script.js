@@ -1,4 +1,4 @@
-function desenhaQuadrado(x, y, largura, altura, cor) {
+function desenharQuadrado(x, y, largura, altura, cor) {
 
     pincel.fillStyle = cor;
     pincel.fillRect(x, y, largura, altura)
@@ -16,24 +16,31 @@ function desenharCirculo(x, y, raio, cor) {
 
 function desenharPaletaDeCores() {
     
-    desenhaQuadrado(xCor1, yQuadrados, larguraPaleta, alturaPaleta, '#ABDEE6');
-    desenhaQuadrado(xCor2, yQuadrados, larguraPaleta, alturaPaleta, '#CBAACB');
-    desenhaQuadrado(xCor3, yQuadrados, larguraPaleta, alturaPaleta, '#FFFFB5');
-    desenhaQuadrado(xCor4, yQuadrados, larguraPaleta, alturaPaleta, '#FFCCB6');
-    desenhaQuadrado(xCor5, yQuadrados, larguraPaleta, alturaPaleta, '#F3B0C3');
+    desenharQuadrado(xCor1, yQuadrados, larguraPaleta, alturaPaleta, '#ABDEE6');
+    desenharQuadrado(xCor2, yQuadrados, larguraPaleta, alturaPaleta, '#CBAACB');
+    desenharQuadrado(xCor3, yQuadrados, larguraPaleta, alturaPaleta, '#FFFFB5');
+    desenharQuadrado(xCor4, yQuadrados, larguraPaleta, alturaPaleta, '#FFCCB6');
+    desenharQuadrado(xCor5, yQuadrados, larguraPaleta, alturaPaleta, '#F3B0C3');
     pincel.strokeStyle = '#8FCACA';
-    pincel.strokeRect(0,0,800,50)
+    pincel.strokeRect(0,0,800,50) // Borda do retângulo superior
 }
 
 function desenharRaios() {
-    desenharCirculo(80, 575, 5, '#55CBCD');
-    desenharCirculo(240, 575, 10, '#55CBCD');
-    desenharCirculo(400, 575, 15, '#55CBCD');
-    desenharCirculo(560, 575, 20, '#55CBCD');
-    desenharCirculo(720, 575, 24, '#55CBCD');
-    pincel.strokeStyle = '#8FCACA';
-    pincel.strokeRect(0,550,800,50)
-    
+    var corRaio = '#55CBCD';
+    desenharQuadrado(0, 550, 800, 500, '#FFCCB6');
+    desenharCirculo(120, 575, 5, corRaio);
+    desenharCirculo(240, 575, 10, corRaio);
+    desenharCirculo(400, 575, 15, corRaio);
+    desenharCirculo(560, 575, 20, corRaio);
+    desenharCirculo(720, 575, 24, corRaio);
+    pincel.strokeStyle = '#8FCACA';    
+    pincel.strokeRect(0,550,800,50) // borda do retângulo inferior
+        
+}
+function escreverTexto(texto, x, y, cor) {
+    pincel.font='20px Georgia';
+    pincel.fillStyle = cor;
+    pincel.fillText(texto, x, y);
 }
 
 function lidarComMovimentoDoMouse(evento) {
@@ -47,7 +54,7 @@ function lidarComMovimentoDoMouse(evento) {
         }
 
     if((x >= 0) && (x < 800)
-        && (y > 545) && (y < 600)) {
+        && (y > 542) && (y < 600)) {
             desenha = false;
         }
 
@@ -109,15 +116,20 @@ function mudarCor(evento) {
         && (y < alturaPaleta)) {
             corAtual = '#F3B0C3';
             console.log('Cor = #F3B0C3');
-        }        
+        }
+    if((x >= 10) && (x < 90) 
+        && (y >= 550) && (y<=580)) {
+        corAtual = '#D4F0F0';
+        console.log(x, y);
+    }
 }
 
 function mudarRaio(evento) {
     var xRaio = evento.pageX - tela.offsetLeft;   
     var yRaio = evento.pageY - tela.offsetTop;
 
-    if((xRaio >= 75) 
-    && (xRaio <= 85)
+    if((xRaio >= 115) 
+    && (xRaio <= 125)
     && (yRaio >= 570)
     && (yRaio <= 580)) {
         raio = 5;
@@ -180,11 +192,16 @@ var yQuadrados = 0;
 var alturaPaleta = 50;
 var larguraPaleta = 160;
 
+function inserirElementos() {
+    desenharPaletaDeCores();
+    desenharRaios();
+    escreverTexto('Borracha', 10, 580, 'white');
+    pincel.strokeStyle = 'white';
+    pincel.strokeRect(6,558,90,30)
+}
 
 
-desenharPaletaDeCores();
-
-desenharRaios();
+inserirElementos();
 
 tela.onmousemove = lidarComMovimentoDoMouse;
 
