@@ -25,6 +25,15 @@ function desenharPaletaDeCores() {
     pincel.strokeRect(0,0,800,50)
 }
 
+function desenharRaios() {
+    desenharCirculo(80, 25, 5, '#D4F0F0');
+    desenharCirculo(240, 25, 10, '#D4F0F0');
+    desenharCirculo(400, 25, 15, '#D4F0F0');
+    desenharCirculo(560, 25, 20, '#D4F0F0');
+    desenharCirculo(720, 25, 24, '#D4F0F0');
+    
+}
+
 function lidarComMovimentoDoMouse(evento) {
 
     var x = evento.pageX - tela.offsetLeft;
@@ -96,6 +105,51 @@ function mudarCor(evento) {
         }        
 }
 
+function mudarRaio(evento) {
+    var xRaio = evento.pageX - tela.offsetLeft;   
+    var yRaio = evento.pageY - tela.offsetTop;
+
+    if((xRaio >= 75) 
+    && (xRaio <= 85)
+    && (yRaio >= 20)
+    && (yRaio <= 30)) {
+        raio = 5;
+        console.log('Raio = 5');
+    }
+
+    if((xRaio >= 230) 
+    && (xRaio <= 250)
+    && (yRaio >= 15)
+    && (yRaio <= 35)) {
+        raio = 10;
+        console.log('Raio = 10');
+    }
+
+    if((xRaio >= 385) 
+    && (xRaio <= 415)
+    && (yRaio >= 10)
+    && (yRaio <= 40)) {
+        raio = 15;
+        console.log('Raio = 15');
+    }
+
+    if((xRaio >= 540) 
+    && (xRaio <= 580)
+    && (yRaio >= 5)
+    && (yRaio <= 45)) {
+        raio = 20;
+        console.log('Raio = 20');
+    }
+
+    if((xRaio >= 695) 
+    && (xRaio <= 745)
+    && (yRaio >= 0)
+    && (yRaio <= 50)) {
+        raio = 25;
+        console.log('Raio = 25');
+    }
+}
+
 function limparTela() {
     pincel.fillStyle = '#D4F0F0';
     pincel.fillRect(0, 50, 800, 600);
@@ -104,7 +158,7 @@ function limparTela() {
 
 var tela = document.querySelector('canvas');
 var pincel = tela.getContext('2d');
-pincel.fillStyle ='#D4F0F0'; //;
+pincel.fillStyle ='#D4F0F0';
 pincel.fillRect(0, 0, 800, 600);
 
 var desenha = false;
@@ -119,7 +173,11 @@ var yQuadrados = 0;
 var alturaPaleta = 50;
 var larguraPaleta = 160;
 
-desenharPaletaDeCores(); // mostra os quadrados de seleção de cores
+
+
+desenharPaletaDeCores();
+
+desenharRaios();
 
 tela.onmousemove = lidarComMovimentoDoMouse;
 
@@ -127,6 +185,8 @@ tela.onmousedown = habilitarDesenho;
 
 tela.onmouseup = desabilitarDesenho;
 
-tela.onclick = mudarCor;
+tela.onclick = mudarCor; 
+
+tela.ondblclick = mudarRaio;
 
 tela.oncontextmenu = limparTela;
