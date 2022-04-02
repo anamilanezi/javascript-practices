@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retira a dezena</title>
+    <style>
+
+        body {
+                text-align: center;                        
+                place-content: center;
+                background-color: #cef8fa;
+                font-family: monospace;
+                color: rgb(59, 103, 185);
+            }
+            .conversor {
+                text-align: center;
+                background-color: rgb(26, 167, 143);
+                padding: 20px;
+            }
+        
+                
+            h3 {
+                margin: 0;
+                font-size: 20px;
+                color: #e8ff82
+            }
+    
+        </style>
+    
+    </head>
+    
+    <body>
+        <h2>Programa que recebe um número inteiro e retorna o dígito das dezenas. </h2>
+        <div class="conversor">    
+            <h3>Por favor, entre com um número.</h3><br>
+            <div class="entrada">
+                <input/>
+                <button>Converter</button>   
+            </div>    
+        </div> 
+    </body>
+
+    <script>
+
+        var stringEntrada;
+        var botao = document.querySelector('button');
+
+        function retirarDezena() {
+
+            stringEntrada = document.querySelector('input');
+            var numeroEntrada = parseInt(stringEntrada.value);
+
+            var retiraUnidade = parseInt(numeroEntrada / 10);
+            var digitoDezena = retiraUnidade % 10;
+
+            alert("O dígito da dezena é " + digitoDezena);
+        
+        }
+
+        botao.onclick = retirarDezena;
+
+
+    </script>
+
+
+</html>
