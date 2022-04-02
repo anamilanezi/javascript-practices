@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Par ou Ímpar?</title>
+
+    <style>
+
+    body {
+            text-align: center;                        
+            place-content: center;
+            background-color: #FDDF7E;
+            font-family: monospace;
+            color: #815CAB; 
+        }
+        .confere {
+            text-align: center;
+            background-color: #815CAB;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+        
+
+        h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #FFEAA5
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <h2>Programa que recebe um número inteiro e identifica se é par ou ímpar.</h2>
+    <div class="confere">    
+        <h3>Por favor, entre com um número inteiro</h3><br>
+            <input/>
+            <button>Par ou Ímpar?</button>    
+    </div> 
+</body>
+
+<script>
+
+    var input = document.querySelector('input');
+    var button = document.querySelector('button');
+
+    function verificarNumero() {
+        
+        var numero = parseInt(input.value);
+
+        if((numero % 2) == 0) {
+            alert("Esse número é par!");
+        } else {
+            alert("Esse número é ímpar!");
+        }
+        
+    }
+
+    button.onclick = verificarNumero;
+
+</script>
+
+
+</html>
