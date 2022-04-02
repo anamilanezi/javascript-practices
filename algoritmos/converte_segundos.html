@@ -59,16 +59,23 @@
         stringSegundos = document.querySelector('input');
         var entradaSegundos = parseInt(stringSegundos.value);
 
-        var totalDias = parseInt(entradaSegundos / 86400);
-        var restoDias = parseInt(entradaSegundos % segundosDias);
+        if (isNaN(entradaSegundos)) {
 
-        var totalHoras = parseInt(restoDias / segundosHoras);
-        var restoHoras = parseInt(restoDias % segundosHoras);
+            alert("Por favor, insira um número inteiro válido.")
 
-        var totalMinutos = parseInt(restoHoras / segundoMinutos);
-        var restoSegundos = parseInt(restoHoras % segundoMinutos);
+        } else {
 
-        alert("O valor inserido corresponde a " + totalDias + " dias, " + totalHoras + " horas, " + totalMinutos + " minutos e " + restoSegundos + " segundos.");
+            var totalDias = parseInt(entradaSegundos / 86400);
+            var restoDias = parseInt(entradaSegundos % segundosDias);
+
+            var totalHoras = parseInt(restoDias / segundosHoras);
+            var restoHoras = parseInt(restoDias % segundosHoras);
+
+            var totalMinutos = parseInt(restoHoras / segundoMinutos);
+            var restoSegundos = parseInt(restoHoras % segundoMinutos);
+
+            alert("O valor inserido corresponde a " + totalDias + " dias, " + totalHoras + " horas, " + totalMinutos + " minutos e " + restoSegundos + " segundos.");
+        }    
     }
 
     botao.onclick = converter;

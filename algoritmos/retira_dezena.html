@@ -52,11 +52,17 @@
             stringEntrada = document.querySelector('input');
             var numeroEntrada = parseInt(stringEntrada.value);
 
-            var retiraUnidade = parseInt(numeroEntrada / 10);
-            var digitoDezena = retiraUnidade % 10;
+            if (isNaN(numeroEntrada)) {
 
-            alert("O dígito da dezena é " + digitoDezena);
-        
+                alert("Por favor, insira um número inteiro válido.")
+
+            } else {
+
+                var retiraUnidade = parseInt(numeroEntrada / 10);
+                var digitoDezena = retiraUnidade % 10;
+
+                alert("O dígito da dezena é " + digitoDezena);
+            }
         }
 
         botao.onclick = retirarDezena;
