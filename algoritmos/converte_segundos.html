@@ -3,17 +3,42 @@
 <html lang="pt-br">
 
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de segundos</title>
+
+    <style>
+
+    body {
+            text-align: center;                        
+            place-content: center;
+            background-color: #f8cff8;
+
+        }
+        .conversor {
+            text-align: center;
+            background-color: cornflowerblue;
+            padding: 20px;
+        }
+
+        h3 {
+            margin: 0;
+            font-family: 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+    </style>
+
 </head>
 
 <body>
     <div class="conversor">    
-        <h3>Por favor, entre com o número de segundos que deseja converter:</h3><br>
-        <input/>
-        <button>Converter</button>   
+        <h3>Por favor, entre com o número de <br> segundos que deseja converter:</h3><br>
+        <div class="entrada">
+            <input/>
+            <button>Converter</button>   
+        </div>    
     </div> 
 </body>
 
@@ -39,7 +64,7 @@
         var totalMinutos = parseInt(restoHoras / segundoMinutos);
         var restoSegundos = parseInt(restoHoras % segundoMinutos);
 
-        alert(totalDias + " dias, " + totalHoras + " horas, " + totalMinutos + " minutos e " + restoSegundos + " segundos.");
+        alert("O valor inserido corresponde à " + totalDias + " dias, " + totalHoras + " horas, " + totalMinutos + " minutos e " + restoSegundos + " segundos.");
     }
 
     botao.onclick = converter;
