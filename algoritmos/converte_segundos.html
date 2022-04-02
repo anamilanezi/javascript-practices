@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de segundos</title>
+</head>
+
+<body>
+    <div class="conversor">    
+        <h3>Por favor, entre com o número de segundos que deseja converter:</h3><br>
+        <input/>
+        <button>Converter</button>   
+    </div> 
+</body>
+
+<script>
+    
+    var stringSegundos; 
+    var botao = document.querySelector('button');
+    var segundosDias  = 86400;
+    var segundosHoras = 3600;
+    var segundoMinutos = 60;
+    
+    function converter() {
+
+        stringSegundos = document.querySelector('input');
+        var entradaSegundos = parseInt(stringSegundos.value);
+
+        var totalDias = parseInt(entradaSegundos / 86400);
+        var restoDias = parseInt(entradaSegundos % segundosDias);
+
+        var totalHoras = parseInt(restoDias / segundosHoras);
+        var restoHoras = parseInt(restoDias % segundosHoras);
+
+        var totalMinutos = parseInt(restoHoras / segundoMinutos);
+        var restoSegundos = parseInt(restoHoras % segundoMinutos);
+
+        alert(totalDias + " dias, " + totalHoras + " horas, " + totalMinutos + " minutos e " + restoSegundos + " segundos.");
+    }
+
+    botao.onclick = converter;
+
+</script>
+
+</html>
