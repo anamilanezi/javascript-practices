@@ -60,7 +60,6 @@
         var adicionar = document.getElementById('adicionar');
         var calcular = document.getElementById('calcular');
         var coordenadas = [];
-        var contador = 0;
         var limparLista = false;
 
         function adicionarLista () {
@@ -71,20 +70,18 @@
                 alert("Por favor, digite um número válido.");
             } else {
                 
-                if(contador < 4) {
+                if(coordenadas.length < 4) {
                     coordenadas.push(numero);
-                    contador++;
                     console.log(coordenadas);
                 }
 
-                if(contador == 4) {
+                if(coordenadas.length == 4) {
                     coordenadas.push(numero);
                     alert("Número máximo atingido, calcule a distância.");
-                    contador = 0;
                 }             
-                valorEntrada.value = "";
-                valorEntrada.focus();
-            }
+            }                
+            valorEntrada.value = "";
+            valorEntrada.focus();
         }
 
         function calcularDistancia() {
