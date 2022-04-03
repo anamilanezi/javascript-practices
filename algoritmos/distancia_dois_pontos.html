@@ -69,23 +69,23 @@
 
             if(isNaN(numero)) {
                 alert("Por favor, digite um número válido.");
-            } 
-            
-            if(contador < 4) {
-                coordenadas.push(numero);
-                contador++;
-                console.log(coordenadas);
-            }
+            } else {
+                
+                if(contador < 4) {
+                    coordenadas.push(numero);
+                    contador++;
+                    console.log(coordenadas);
+                }
 
-            if(contador == 4) {
-                coordenadas.push(numero);
-                alert("Número máximo atingido, calcule a distância.");
-                contador = 0;
-            }             
-            valorEntrada.value = "";
-            valorEntrada.focus();
+                if(contador == 4) {
+                    coordenadas.push(numero);
+                    alert("Número máximo atingido, calcule a distância.");
+                    contador = 0;
+                }             
+                valorEntrada.value = "";
+                valorEntrada.focus();
+            }
         }
-        
 
         function calcularDistancia() {
             var x1 = coordenadas[0];
