@@ -11,13 +11,13 @@
         body {
                 text-align: center;                        
                 place-content: center;
-                background-color: #99C7BD;
+                background-color: #88E09F;
                 font-family: monospace;
-                color: #FFE0DD; 
+                color: #E4FCEA; 
             }
             .programa {
                 text-align: center;
-                background-color: #FFD8A8;
+                background-color: #EC9E51;
                 padding: 20px;
             }
     
@@ -30,16 +30,30 @@
             h3 {
                 margin: 0;
                 font-size: 20px;
-                color: #378574
-            }
-
-            #calcular {
-                width: 200px;
+                color: #B6F1C6
             }
 
             button {
                 font-family: monospace;
             }
+
+            #calcular {
+                width: 180px;
+            }
+
+            input {
+                width: 85px
+            }
+
+            .resultado {
+            background-color: #B6F1C6;
+            color: #3DB15C;
+            width: 300px;
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #5FCB7B;
+            border-radius: 10px;
+        }
     
         </style>
 
@@ -51,14 +65,14 @@
         <h3>Por favor, entre com quatro números inteiros.</h3><br>
             <input/>
             <button id="adicionar">Adicionar</button><br><br>    
-            <button id="calcular">Calcular distância</button>
+            <h3 class="resultado">RESULTADO</h3> 
     </div>
     
     <script>
 
         var valorEntrada = document.querySelector('input');
         var adicionar = document.getElementById('adicionar');
-        var calcular = document.getElementById('calcular');
+        var resultado = document.querySelector('.resultado');
         var coordenadas = [];
         var limparLista = false;
 
@@ -77,7 +91,8 @@
 
                 if(coordenadas.length == 4) {
                 //  coordenadas.push(numero);
-                    alert("Número máximo atingido, calcule a distância.");
+                    //alert("Número máximo atingido, agora calcule a distância.");
+                    calcularDistancia();
                 }             
             }                
             valorEntrada.value = "";
@@ -96,13 +111,13 @@
 
             console.log(distancia)
         
-            alert("A distância entre os pontos [" + x1 + "," + y1 + "] e [" +  x2 + "," + y2 + "] é " + distancia + ".")
+            mensagem = "A distância entre os pontos [" + x1 + "," + y1 + "] e [" +  x2 + "," + y2 + "] é " + distancia + "."
+            resultado.textContent = mensagem;
             coordenadas = [];
             
         }
 
         adicionar.onclick = adicionarLista;
-        calcular.onclick = calcularDistancia;
 
     </script>
 

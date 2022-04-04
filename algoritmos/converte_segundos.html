@@ -14,13 +14,13 @@
     body {
             text-align: center;                        
             place-content: center;
-            background-color: #f8cff8;
+            background-color: #67BC9F;
             font-family: monospace;
-            color: rgb(59, 103, 185);
+            color: #206468;
         }
         .conversor {
             text-align: center;
-            background-color: cornflowerblue;
+            background-color: #B44C07;
             padding: 20px;
         }
         
@@ -28,7 +28,17 @@
         h3 {
             margin: 0;
             font-size: 20px;
-            color: #fae4fa
+            color: #F5902E
+        }
+
+        .resultado {
+            background-color: #F5902E;
+            color: #206468;
+            width: 250px;
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #206468;
+            border-radius: 10px;
         }
 
     </style>
@@ -41,32 +51,41 @@
         <h3>Por favor, entre com o número de <br> segundos que deseja converter:</h3><br>
         <div class="entrada">
             <input/>
-            <button>Converter</button>   
+            <button>Converter</button><br><br>
+            <h3 class="resultado"> RESULTADO</h3>  
         </div>    
     </div> 
 </body>
 
 <script>
-    
-    var stringSegundos; 
+
     var botao = document.querySelector('button');
+    var resultado = document.querySelector('.resultado')
+    
+    var valorSegundos; 
+    
     var segundosDias  = 86400;
     var segundosHoras = 3600;
     var segundoMinutos = 60;
+
+    var textoDia;
+    var textoHora;
+    var textoMinuto;
+    var textoSegundo;
     
     function converter() {
 
-        stringSegundos = document.querySelector('input');
-        var entradaSegundos = parseInt(stringSegundos.value);
+        valorSegundos = document.querySelector('input');
+        var totalSegundos = parseInt(valorSegundos.value);
 
-        if (isNaN(entradaSegundos)) {
+        if (isNaN(totalSegundos)) {
 
             alert("Por favor, insira um número inteiro válido.")
 
         } else {
 
-            var totalDias = parseInt(entradaSegundos / 86400);
-            var restoDias = parseInt(entradaSegundos % segundosDias);
+            var totalDias = parseInt(totalSegundos / 86400);
+            var restoDias = parseInt(totalSegundos % segundosDias);
 
             var totalHoras = parseInt(restoDias / segundosHoras);
             var restoHoras = parseInt(restoDias % segundosHoras);
@@ -74,8 +93,36 @@
             var totalMinutos = parseInt(restoHoras / segundoMinutos);
             var restoSegundos = parseInt(restoHoras % segundoMinutos);
 
-            alert("O valor inserido corresponde a " + totalDias + " dias, " + totalHoras + " horas, " + totalMinutos + " minutos e " + restoSegundos + " segundos.");
-        }    
+            if(totalDias == 1) {
+                textoDia = " dia, "
+            } else {
+                textoDia = " dias, "
+            }
+
+            if(totalHoras == 1) {
+                textoHora = " hora, "
+            } else {
+                textoHora = " horas, "
+            }
+
+            if(totalMinutos == 1) {
+                textoMinuto = " minuto e "
+            } else {
+                textoMinuto = " minutos e "
+            }
+
+            if(totalSegundos == 1) {
+                textoSegundo = " segundo."
+            } else {
+                textoSegundo = " segundos."
+            }
+
+            var mensagem = "O valor inserido corresponde a " + totalDias + textoDia + totalHoras + textoHora + totalMinutos + textoMinuto + restoSegundos + textoSegundo;
+
+            resultado.textContent = mensagem
+        }
+        valorSegundos.value = "";
+        valorSegundos.focus();    
     }
 
     botao.onclick = converter;
