@@ -114,12 +114,14 @@
             }
             if(delta == 0) {
                 calcularRaizes(a, b, c);
-                alert("Essa equação possui uma raiz igual a " + x1)
+                resultado.textContent = "Essa equação possui raiz igual a " + x1;
+                parametrosEquacao = [];
             }
             if(delta > 0) {
                 x1 = (- b + delta) / (2 * a);
                 x2 = (- b - delta) / (2 * a);
                 resultado.textContent = "Essa equação possui duas raízes: " + x1 + " e " + x2;
+                parametrosEquacao = [];
             }
         }
 
