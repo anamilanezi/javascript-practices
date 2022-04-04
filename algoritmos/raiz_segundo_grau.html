@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raiz da equação</title>
+    <style>
+
+        body {
+                text-align: center;                        
+                place-content: center;
+                background-color: #aff5d8;
+                font-family: monospace;
+                color: #9e53db; 
+            }
+            .programa {
+                text-align: center;
+                background-color: #4c7bb1;
+                padding: 20px;
+            }
+    
+            h2 {
+                font-size: 22px;
+                font-weight: lighter;
+            }
+            
+    
+            h3 {
+                margin: 0;
+                font-size: 20px;
+                color: #aff5d8
+            }
+
+            #verificar {
+                width: 200px;
+            }
+
+            button {
+                font-family: monospace;
+            }
+    
+        </style>
+
+</head>
+<body>
+
+    <h2>O programa deve receber os parâmetros a, b e c da equação <em>ax² + bx + c</em>, respectivamente, e exibir uma mensagem contendo informação sobre suas raízes.</h2>
+    <div class="programa">    
+        <h3>Por favor, entre com três números inteiros.</h3><br>
+            <input/>
+            <button id="adicionar">Adicionar</button><br><br>    
+            <button id="verificar">Verificar raízes</button>
+    </div>
+    
+    <script>
+
+        var valorEntrada = document.querySelector('input');
+        var adicionar = document.getElementById('adicionar');
+        var verificar = document.getElementById('verificar');
+
+        var parametrosEquacao = [];
+
+        var a;
+        var b;
+        var c;
+        
+
+        function adicionarParametro() {
+                        
+            var parametro = parseInt(valorEntrada.value);
+
+            if(isNaN(parametro)) {
+                alert("Por favor, digite um número válido.");
+            } else {                
+                if(parametrosEquacao.length < 3) {
+                    parametrosEquacao.push(parametro);
+                    console.log(parametrosEquacao);
+                }
+                if(parametrosEquacao.length == 3) {
+                    //parametrosEquacao.push(parametro); 
+                    alert("Número máximo atingido, verifique as raízes.");
+                    console.log(parametrosEquacao);
+                }             
+            }                
+            valorEntrada.value = "";
+            valorEntrada.focus();
+        }
+// Calcular o delta = b² – 4ac
+        function calcularDelta() {
+
+            a = parametrosEquacao[0];
+            b = parametrosEquacao[1];
+            c = parametrosEquacao[2];
+            
+            var delta = ((b ** 2) - (4 * a * c));
+
+            console.log(delta);
+            return delta;
+
+        }
+
+        adicionar.onclick = adicionarParametro;
+        verificar.onclick = calcularDelta;
+
+    </script>
+
+</body>
+</html>

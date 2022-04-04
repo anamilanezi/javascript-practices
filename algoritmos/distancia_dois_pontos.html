@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular a distância entre dois pontos</title>
+
+    <style>
+
+        body {
+                text-align: center;                        
+                place-content: center;
+                background-color: #99C7BD;
+                font-family: monospace;
+                color: #FFE0DD; 
+            }
+            .programa {
+                text-align: center;
+                background-color: #FFD8A8;
+                padding: 20px;
+            }
+    
+            h2 {
+                font-size: 22px;
+                font-weight: lighter;
+            }
+            
+    
+            h3 {
+                margin: 0;
+                font-size: 20px;
+                color: #378574
+            }
+
+            #calcular {
+                width: 200px;
+            }
+
+            button {
+                font-family: monospace;
+            }
+    
+        </style>
+
+</head>
+<body>
+
+    <h2><strong>Receba 4 números na entrada, um de cada vez.</strong><br> Os dois primeiros devem corresponder, respectivamente, às coordenadas x e y de um ponto em um plano cartesiano. <br>Os dois últimos devem corresponder, respectivamente, às coordenadas x e y de um outro ponto no mesmo plano.</h2>
+    <div class="programa">    
+        <h3>Por favor, entre com quatro números inteiros.</h3><br>
+            <input/>
+            <button id="adicionar">Adicionar</button><br><br>    
+            <button id="calcular">Calcular distância</button>
+    </div>
+    
+    <script>
+
+        var valorEntrada = document.querySelector('input');
+        var adicionar = document.getElementById('adicionar');
+        var calcular = document.getElementById('calcular');
+        var coordenadas = [];
+        var limparLista = false;
+
+        function adicionarLista () {
+            
+            var numero = parseInt(valorEntrada.value);
+
+            if(isNaN(numero)) {
+                alert("Por favor, digite um número válido.");
+            } else {
+                
+                if(coordenadas.length < 4) {
+                    coordenadas.push(numero);
+                    console.log(coordenadas);
+                }
+
+                if(coordenadas.length == 4) {
+                //  coordenadas.push(numero);
+                    alert("Número máximo atingido, calcule a distância.");
+                }             
+            }                
+            valorEntrada.value = "";
+            valorEntrada.focus();
+        }
+
+        function calcularDistancia() {
+            var x1 = coordenadas[0];
+            var y1 = coordenadas[1];
+            var x2 = coordenadas[2];
+            var y2 = coordenadas[3];
+
+            var distancia = Math.sqrt(((x1 - x2) ** 2) + ((y1 - y2) ** 2));
+
+            distancia = distancia.toFixed(2);
+
+            console.log(distancia)
+        
+            alert("A distância entre os pontos [" + x1 + "," + y1 + "] e [" +  x2 + "," + y2 + "] é " + distancia + ".")
+            coordenadas = [];
+            
+        }
+
+        adicionar.onclick = adicionarLista;
+        calcular.onclick = calcularDistancia;
+
+    </script>
+
+</body>
+</html>
