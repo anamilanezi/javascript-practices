@@ -22,7 +22,6 @@
     
             h2 {
                 font-size: 22px;
-                font-weight: lighter;
             }
             
     
@@ -39,6 +38,16 @@
             button {
                 font-family: monospace;
             }
+
+            .resultado {
+            background-color: #D9FB7A;
+            color: #9e53db;
+            width: 250px;
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #9e53db;
+            border-radius: 10px;
+        }
     
         </style>
 
@@ -50,20 +59,24 @@
         <h3>Por favor, entre com três números inteiros.</h3><br>
             <input/>
             <button id="adicionar">Adicionar</button><br><br>    
-            <button id="verificar">Verificar raízes</button>
+
+            <h3 class="resultado">Resultado</h3>
     </div>
     
     <script>
 
         var valorEntrada = document.querySelector('input');
         var adicionar = document.getElementById('adicionar');
-        var verificar = document.getElementById('verificar');
+        var resultado = document.querySelector('.resultado');
 
         var parametrosEquacao = [];
 
         var a;
         var b;
         var c;
+
+        var x1;
+        var x2;
         
 
         function adicionarParametro() {
@@ -78,16 +91,16 @@
                     console.log(parametrosEquacao);
                 }
                 if(parametrosEquacao.length == 3) {
-                    //parametrosEquacao.push(parametro); 
-                    alert("Número máximo atingido, verifique as raízes.");
+                   // calcularDelta();
+                    calcularRaizes();
                     console.log(parametrosEquacao);
                 }             
             }                
             valorEntrada.value = "";
             valorEntrada.focus();
         }
-// Calcular o delta = b² – 4ac
-        function calcularDelta() {
+
+        function calcularRaizes() {
 
             a = parametrosEquacao[0];
             b = parametrosEquacao[1];
@@ -95,13 +108,22 @@
             
             var delta = ((b ** 2) - (4 * a * c));
 
-            console.log(delta);
-            return delta;
-
+            if(delta < 0) {
+                resultado.textContent = "Essa equação não possui raízes reais."
+                parametrosEquacao = [];
+            }
+            if(delta == 0) {
+                calcularRaizes(a, b, c);
+                alert("Essa equação possui uma raiz igual a " + x1)
+            }
+            if(delta > 0) {
+                x1 = (- b + delta) / (2 * a);
+                x2 = (- b - delta) / (2 * a);
+                resultado.textContent = "Essa equação possui duas raízes: " + x1 + " e " + x2;
+            }
         }
 
         adicionar.onclick = adicionarParametro;
-        verificar.onclick = calcularDelta;
 
     </script>
 
