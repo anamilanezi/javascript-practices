@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troca a bandeira</title>
+
+    <style>
+        body {
+            font-family: monospace;
+            text-align: center;
+            display: grid;
+            place-content: center;
+            background-color: #B4CF66;
+        }
+
+        canvas {
+            cursor: crosshair;
+            border: 2px solid #44803F;
+        }
+
+        h2 {
+            color: #44803F;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h2>Trocar a bandeira (todo dia um 7x1)</h2>
+    <canvas width="600" height="400"></canvas>
+
+    <script>
+
+        var tela = document.querySelector('canvas');
+        var pincel = tela.getContext('2d');
+
+        function brasil() {
+
+            pincel.fillStyle = 'darkgreen';
+            pincel.fillRect(0, 0, 600, 400);
+
+            pincel.fillStyle = 'yellow';
+            pincel.beginPath();
+            pincel.moveTo(30,200);
+            pincel.lineTo(300,370);
+            pincel.lineTo(570,200);
+            pincel.lineTo(300,30);
+            pincel.fill();
+
+            pincel.fillStyle = 'darkblue';
+            pincel.beginPath();
+            pincel.arc(300, 200, 110, 0 , 2* Math.PI);
+            pincel.fill();
+
+        }
+
+        function alemanha() {
+            
+            pincel.fillStyle = 'black';
+            pincel.fillRect(0, 0, 600, 400/3);
+
+            pincel.fillStyle = 'red';
+            pincel.fillRect(0, 400/3, 600, 400/3);
+
+            pincel.fillStyle = 'yellow';
+            pincel.fillRect(0, 2 * (400/3), 600, 400/3);
+
+        }
+
+        var mostraBrasil = true; 
+
+        function trocarBandeira() {
+
+            if(mostraBrasil) {
+                brasil();
+            } else {
+                alemanha();
+            }
+
+            mostraBrasil = !mostraBrasil;  
+        }
+
+        setInterval(trocarBandeira, 3000)
+
+    </script>
+</body>
+</html>
+

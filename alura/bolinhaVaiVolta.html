@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolinha que Vai e Volta</title>
+    <style>
+        body {
+            font-family: monospace;
+            text-align: center;
+            display: grid;
+            place-content: center;
+            background-color: #9AEBA3; 
+        }
+
+        canvas {
+            cursor: crosshair;
+            border: 2px solid #13678A;
+        }
+
+        h2 {
+            color: #13678A;
+        }
+</style>
+</head>
+<body>
+<h2>Bolinha que vai e volta</h2>
+<canvas width="600" height="400"></canvas> 
+
+<script>
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+    
+    pincel.fillStyle = '#DAFDBA';
+    pincel.fillRect(0, 0, 600, 400);
+
+    function desenharCirculo(x, y, raio) {
+
+        pincel.fillStyle = '#13678A';
+        pincel.beginPath();
+        pincel.arc(x, y, raio, 0, 2 * Math.PI);
+        pincel.fill();
+    }
+
+    function limparTela() {
+
+        pincel.fillStyle = '#DAFDBA';
+        pincel.fillRect(0, 0, 600, 400);
+    }
+
+    var x = 20;    // A variável deve ser declarada antes da atualização da tela, se não cada vez que chamar a função, ela terá o mesmo valor
+    var volta = false;  // Cria uma chave para bolinha voltar
+
+
+// Cria uma função para aumentar o valor de x e desenhar a bolinha no sentido ->
+    function bolinhaVai() {
+        limparTela();
+        desenharCirculo(x, 200, 15);
+        x++;
+    }
+
+// Cria uma função para diminuir o valor de x e desenhar a bolinha no sentido <- 
+    function bolinhaVolta() {
+        limparTela();
+        desenharCirculo(x, 200, 15);
+        x--;
+    }
+
+// Cria a função que será chamada no intervalo e que decidirá se a bolinha vai ou volta
+
+    function moverBolinha() {
+
+        if(x > 580) {          // Liga a chave de voltar quando o x alcançar o valor máximo da tela
+            volta = true;
+        }
+
+        if(x < 20) {           // Desliga a chave quando a bolinha alcançar o valor mínimo da tela
+            volta = false;
+        }
+
+        if(volta) {             // A chave determina se a bolinha vai ou volta
+            bolinhaVolta();
+        } else {
+            bolinhaVai();
+        }
+    }
+
+    setInterval(moverBolinha, 5);
+
+/* Resolução do professor:
+
+vamos criar uma variável chamada sentido. Ela começará com o valor 1, indicando que nossa 
+variável x deve ser incrementada de 1 em 1. Quando x for maior que 600, sentido receberá -1,
+o que fará o decremento da variável x:
+    
+    var x = 20;
+    var sentido = 1;
+
+    function atualizaTela() {
+
+        limpaTela();
+
+        if( x > 600) {
+            sentido = -1;
+        } else if (x < 0) {
+            sentido = 1;
+        } 
+
+        desenhaCirculo(x, 20, 10);
+        x = x + sentido;
+    }
+
+    setInterval(atualizaTela, 10);
+
+*/ 
+</script>
+
+</body>
+</html>
+
+
