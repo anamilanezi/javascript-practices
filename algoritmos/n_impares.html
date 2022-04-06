@@ -7,14 +7,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Par ou Ímpar?</title>
+    <title>N Primeiros Ímpares</title>
 
     <style>
 
     body {
             text-align: center;                        
             place-content: center;
-            background-color: #FDDF7E;
+            background-color: #C2E5F2;
             font-family: monospace;
             color: #815CAB; 
         }
@@ -57,39 +57,47 @@
 </head>
 
 <body>
-    <h2>Programa que recebe um número inteiro e identifica se é par ou ímpar.</h2>
+    <h2>Programa que recebe um número <em>n</em> inteiro positivo na entrada e devolve os <em>n</em> primeiros números ímpares naturais.</h2>
     <div class="conteudo">    
         <h3>Por favor, entre com um número inteiro</h3><br>
             <input/>
-            <button>Par ou Ímpar?</button><br><br>
+            <button>N Ímpares</button><br><br>
             <h3 class="resultado">RESPOSTA</h3>   
     </div> 
 </body>
 
 <script>
 
-    var valorEntrada = document.querySelector('input');
-    var button = document.querySelector('button');
+    var entrada = document.querySelector('input');
+    var botao = document.querySelector('button');
     var resultado = document.querySelector('.resultado');
 
-    function verificarNumero() {
-        
-        var numero = parseInt(valorEntrada.value);
+    var numeroImpar = 1;
+    var listaImpar = [];
 
-        if(isNaN(numero)) {
+    function listarImpares() {
+        
+        var limite = parseInt(entrada.value);
+
+        if(isNaN(limite)) {
             alert("Por favor, insira um número válido.")
         } else {
-            if((numero % 2) == 0) {
-                resultado.textContent = numero + " é um número par!"
-            } else {
-                resultado.textContent = numero + " é um número ímpar!"
+            while(limite >= 1) {                // Enquanto não atinge o limite
+                listaImpar.push(numeroImpar);   // Adiciona o número na lista
+                numeroImpar += 2;               // Soma dois ao antigo número
+                limite--;                       // Diminui do limite
             }
         }
+
+        // Necessário converter array em string e adicionar um espaço para haver quebra de linha!
+        
+        var listaString = listaImpar.join(", ");
+        resultado.textContent = listaString;
         valorEntrada.value = "";
         valorEntrada.focus();
     }
 
-    button.onclick = verificarNumero;
+    botao.onclick = listarImpares;
 
 </script>
 
