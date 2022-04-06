@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fatorial n!</title>
+
+    <style>
+        body {
+            background-color: #95DBAB;
+            font-family: monospace;
+            color: #3E5C49;
+            text-align: center;
+        }
+
+        .conteudo {
+            background-color: #3D8F5A;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+            width: 400px;
+            margin: 10px auto;
+        }
+
+        h3 {
+            margin: auto;
+            font-size: 18px;
+            color: #E6FCEE
+        }
+
+        input {
+            font-family: monospace;
+            width: 160px;
+            border: 2px solid #3E5C49;
+        }
+
+        button {
+            font-family: monospace;
+            /*background-color: #FDDF7E;
+            border: 2px solid #3E5C49*/
+        }
+
+        .resultado {
+            background-color: #071540;
+            color: #E6FCEE;
+            width: 200px;
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #E6FCEE;
+            border-radius: 10px;
+        }
+
+
+    </style>
+
+</head>
+<body>
+
+    <h2>Escreva um programa que receba um número natural <em>n</em> e devolve <em>n!</em> (fatorial).</h2>
+    <div class="conteudo">    
+        <h3>Por favor, entre com um número natural.</h3><br>
+            <input/>
+            <button>n!</button><br><br>
+            <h3 class="resultado">RESPOSTA</h3>   
+    </div> 
+
+
+    <script>
+        
+        var entrada = document.querySelector('input');
+        var botao = document.querySelector('button');
+        var resultado = document.querySelector('.resultado')
+        
+        function calcularFatorial()  {  
+
+            var fatorial = parseInt(entrada.value);  
+            var contador = fatorial - 1;  
+
+            if(isNaN(fatorial)) {
+                alert("Por favor, insira um número válido.")
+            } else {      
+                while(contador > 1) {
+                    fatorial = fatorial * contador;
+                    contador--;
+                }
+            }
+            entrada.value = "";
+            entrada.focus();
+            resultado.textContent = fatorial;
+            console.log(fatorial)
+        }
+
+        botao.onclick = calcularFatorial;
+        
+    </script>
+
+</body>
+</html>
