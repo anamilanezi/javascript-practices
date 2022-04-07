@@ -93,8 +93,10 @@
         
         var listaString = listaImpar.join(", ");
         resultado.textContent = listaString;
-        valorEntrada.value = "";
-        valorEntrada.focus();
+        listaImpar = [];
+        numeroImpar = 1;
+        entrada.value = "";
+        entrada.focus();
     }
 
     botao.onclick = listarImpares;
