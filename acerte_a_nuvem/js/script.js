@@ -7,9 +7,8 @@
 
     var cores = ['#FF6FFF', '#AF69EE', '#29AB87', '#6693F5', '#7fffd4', '#CBAACB', '#FFCCB6', '#F3B0C3', '#FF968A'];
 
-    var mensagens = ['Vem pra Cloud Girls!', 'Vamos juntas!', 'Vamos galera, mulheres!',
-                     'Juntas somos mais fortes!', 'Nunca é tarde para sonhar!', 'Acredite em você!']
-   
+    var mensagens = ['Vamos juntas!', 'Vamos galera, mulheres!',
+                     'Juntas somos mais fortes!', 'Nunca é tarde para sonhar!', 'Vai dar certo!']
     var indiceCor = 0;
     var indiceMensagem = 0;
 
@@ -17,7 +16,7 @@
     var y;
     var xRetangulo = 120;
     var yRetangulo = 70;
-   
+
     function pintarFundo() {
         pincel.fillStyle = '#D4F0F0'
         pincel.fillRect(0,0,width,height)
@@ -101,8 +100,7 @@ function desenharNuvem() {
     
     pincel.fillRect(x + 10,y - 30, 120, 70);  // Retângulo que preenche o centro da nuvem
 
-    desenharTexto("Turma 8", x + 30, y - 10, 'white');    // Criar o texto
-    desenharTexto("Cloud Girls", x + 20, y + 10, 'white');
+    desenharTexto("Acerte-me!", x + 20, y+5, 'white');    // Criar o texto
     }
 
 // Cria função para acertar na nuvem
