@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soma os dígitos</title>
+
+    <style>
+        body {
+            background-color: #95DBAB;
+            font-family: monospace;
+            color: #3E5C49;
+            text-align: center;
+        }
+
+        .conteudo {
+            background-color: #3D8F5A;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+            width: 500px;
+            margin: 10px auto;
+        }
+
+        h3 {
+            margin: auto;
+            font-size: 18px;
+            color: #E6FCEE
+        }
+
+        input {
+            font-family: monospace;
+            width: 160px;
+            border: 2px solid #3E5C49;
+        }
+
+        button {
+            font-family: monospace;
+            /*background-color: #FDDF7E;
+            border: 2px solid #3E5C49*/
+        }
+
+        .resultado {
+            background-color: #071540;
+            color: #E6FCEE;
+            width: 250px;
+            display: inline-block;
+            padding: 10px;
+            border: 2px solid #E6FCEE;
+            border-radius: 10px;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    
+    <h2>Escreva um programa que receba um número inteiro na entrada e devolva a soma dos dígitos desse número.</h2>
+    <div class="conteudo">    
+        <h3>Por favor, entre com um número.</h3><br>
+            <input/>
+            <button>Somar</button><br><br>
+            <h3 class="resultado">RESPOSTA</h3>   
+    </div> 
+
+    <script>
+
+        var entrada = document.querySelector('input');
+        
+        var botao = document.querySelector('button');
+        var resultado = document.querySelector('.resultado');
+        var totalAtual = 0;
+
+    function somaDigitos() {
+        
+        var valorEntrada = entrada.value;
+        var tamanhoEntrada = entrada.value.length
+        for(var i = 0; i < tamanhoEntrada; i++) {
+            var digitoAtual = valorEntrada[i] * 1;
+            totalAtual = digitoAtual + totalAtual;
+            console.log(totalAtual);           
+        }
+        entrada.value = "";
+        entrada.focus();
+        resultado.textContent = "A soma dos dígitos é igual a " + totalAtual + "."
+        totalAtual = 0;
+    }
+
+    botao.onclick = somaDigitos;
+
+        </script>
+
+
+
+</body>
+</html>
