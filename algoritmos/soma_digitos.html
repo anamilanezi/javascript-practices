@@ -89,8 +89,13 @@
         }
         entrada.value = "";
         entrada.focus();
-        resultado.textContent = "A soma dos dígitos é igual a " + totalAtual + "."
-        totalAtual = 0;
+        if(isNaN(totalAtual)) {
+            alert("Por favor, entre com um número válido");
+            totalAtual = 0;
+        } else {
+            resultado.textContent = "A soma dos dígitos é igual a " + totalAtual + "."
+            totalAtual = 0;
+        }
     }
     // Falta implementar uma verificação da entrada do usuário (fora do loop)
 
