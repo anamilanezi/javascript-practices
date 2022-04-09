@@ -81,6 +81,7 @@
         
         var valorEntrada = entrada.value;
         var tamanhoEntrada = entrada.value.length
+
         for(var i = 0; i < tamanhoEntrada; i++) {
             var digitoAtual = valorEntrada[i] * 1;
             totalAtual = digitoAtual + totalAtual;
@@ -91,6 +92,7 @@
         resultado.textContent = "A soma dos dígitos é igual a " + totalAtual + "."
         totalAtual = 0;
     }
+    // Falta implementar uma verificação da entrada do usuário (fora do loop)
 
     botao.onclick = somaDigitos;
 
