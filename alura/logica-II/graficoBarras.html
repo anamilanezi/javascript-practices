@@ -1,0 +1,68 @@
+<canvas width="600" height="400"></canvas>
+
+<script> 
+
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = 'lightgray';
+    pincel.fillRect(0,0,600,400)
+
+function desenharRetangulo(x,y, barra, cor) {      
+    var tela = document.querySelector('canvas');
+    var pincel = tela.getContext('2d');
+
+    pincel.fillStyle = cor;
+    pincel.fillRect(x,y, 50, barra * 3);
+    pincel.strokeStyle = 'black';
+    pincel.strokeRect(x, y, 50, barra * 3);
+}
+
+function escreverTexto(texto, x, y) {
+    pincel.font='20px Georgia';
+    pincel.fillStyle = 'black';
+    pincel.fillText(texto, x + 5, y - 10);
+}
+
+var serie2015 = [50, 25, 20, 5];
+var serie2016 = [65, 20, 13, 2];
+
+var navegadores = ['Google Chrome', 'Firefox', 'Safari', 'Outros']
+
+var cores = ['lightgreen', 'yellow', 'blue', 'magenta']
+
+// Define variáveis para posição inicial
+var x = 50;
+var y = 100;
+
+// Escrever legenda e desenhar gráfico
+escreverTexto('2015', x, y);
+for(var i = 0; i < serie2015.length; i++) {
+    desenharRetangulo(x, y, serie2015[i], cores[i]);
+    y = y + (serie2015[i] * 3);
+}
+
+// Define variáveis novamente
+var x = 200;
+var y = 100;
+
+// Desenha gráfico 2016
+escreverTexto('2016', x, y);
+for(var i = 0; i < serie2016.length; i++) {
+    desenharRetangulo(x, y, serie2016[i], cores[i]);
+    y = y + (serie2016[i] * 3);
+}
+
+x = 300;
+y = 100;
+
+for(var i = 0; i < cores.length; i++) {
+    desenharRetangulo(x, y, 10, cores[i]);
+    y += 50;
+    escreverTexto(navegadores[i], x + 60, y - 20);
+}
+
+
+
+
+</script>
