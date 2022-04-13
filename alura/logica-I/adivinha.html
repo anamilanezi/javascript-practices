@@ -1,0 +1,54 @@
+<meta charset="utf-8">
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br><br>");
+	}
+
+	function mostra(texto) {
+		document.write(texto);
+		pulaLinha();
+	}
+
+	function sorteia(n) { 			// sortear um número de 0 a n
+		return Math.round(Math.random() * n);
+	}
+
+	// var meuNumero = Math.round(Math.random() * 10 + 10);
+
+	var n = 15
+	var meuNumero = sorteia(n)
+	var msgAdivinha = "Digite um número de 0 a " + n
+
+	alert("Você consegue adivinhar que número estou pensando?");
+
+	var seuNumero = prompt(msgAdivinha);
+	var contador = 1;
+
+	while (seuNumero != meuNumero) {
+
+		if(seuNumero > n) {
+		alert("Atenção para as regras do jogo!  Tente novamente.");
+		seuNumero = prompt(msgAdivinha);
+		} 
+		
+		if(seuNumero > meuNumero) {
+		alert("Não foi dessa vez. Esse número é maior que o meu. Tente novamente! ");
+		seuNumero = prompt(msgAdivinha);
+		} 
+		
+		if(seuNumero < meuNumero) {
+		alert("Não foi dessa vez. Esse número é menor que o meu.  Tente novamente! ");
+		seuNumero = prompt(msgAdivinha);
+		}
+		
+		if(seuNumero == meuNumero) {
+			mostra("Parabéns, você acertou! O número pensado foi " + meuNumero)
+			}
+	}
+
+
+
+</script>
+	

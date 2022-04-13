@@ -1,0 +1,69 @@
+<meta charset="utf-8">
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br><br>");
+	}
+
+	function mostra(texto) {
+		document.write(texto);
+		pulaLinha();
+	}
+
+	function calculaImc(peso,altura) {
+		var imc = peso / (altura ** 2);
+		return imc.toPrecision(5);
+	}
+
+	var pesoJoana = 68;
+	var alturaJoana = 1.68;
+	var imcJoana = calculaImc(pesoJoana, alturaJoana);
+
+	var pesoLuan = 60;
+	var alturaLuan = 1.78;
+	var imcLuan = calculaImc(pesoLuan, alturaLuan);
+	
+	var pesoMaria = 54;
+	var alturaMaria = 1.56;
+	var imcMaria = calculaImc(pesoMaria, alturaMaria)
+
+	mostra("Calcule o IMC de Maria: ");
+	calculaImc(pesoMaria, alturaMaria);
+	mostra("Calcule o IMC de Joana: ");
+	calculaImc(pesoJoana, alturaJoana);      // Nada vai ser exibido visto que o return deve ser chamado por um document.write ou mostra
+	mostra("Calcule o IMC de Luan: " + calculaImc(pesoLuan, alturaLuan)); // Assim funciona!
+	calculaImc(pesoLuan, alturaLuan);
+	
+
+	// Dúvida: porque usar mostra("O IMC de Maria é " + calculaImc(pesoMaria, alturaMaria)); fora do escopo da função
+	// resulta em 22.189349112426033O IMC de Maria é undefined
+	// function calculaImc(peso,altura) {
+	//	var imc = peso / (altura ** 2);
+	//	document.write(imc)
+	// Descobri: precisa ter um return e não document.write, como no exemplo do Luan
+
+	
+// Primeira versão com dados fixos
+
+	var pesoJoana = 68;
+	var alturaJoana = 1.68;
+	var imcJoana = calculaImc(pesoJoana, alturaJoana);
+
+	var pesoLuan = 60;
+	var alturaLuan = 1.78;
+	var imcLuan = calculaImc(pesoLuan, alturaLuan);
+	
+	var pesoMaria = 54;
+	var alturaMaria = 1.56;
+	var imcMaria = calculaImc(pesoMaria, alturaMaria)
+
+	mostra("Calcule o IMC de Maria: " + Math.round(calculaImc(pesoMaria, alturaMaria)));
+	
+	mostra("Calcule o IMC de Joana: " + calculaImc(pesoJoana, alturaJoana));
+	
+	mostra("Calcule o IMC de Luan: " + calculaImc(pesoLuan, alturaLuan));
+		
+	mostra("Calcule a soma do IMC de Maria e Luan: " + somaImc(imcMaria,imcLuan))
+</script>
+

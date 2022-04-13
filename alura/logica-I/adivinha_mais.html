@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+
+
+<h2>Consegue adivinhar que número estou pensando?</h2>
+<br>
+<input/>
+<button> Faça seu chute! </button>
+
+<script>
+
+	var meuNumero = Math.round(Math.random() * 10);
+	var pegaInput = document.querySelector("input");
+	
+	// nomeVariavel.value reconhece o valor inserido no campo input
+	//diz para o documento pegar a tag input do mundo html a tag e joga na variável
+
+	function compara() {
+
+		var seuChute = pegaInput.value;
+
+		if(seuChute == meuNumero) {
+			alert("Parabéns, você acertou!");         // Para usar uma variável, deve ser declarada dentro da função, caso contrário ela ficará vazia e não muda
+		
+		} else {
+			
+			if(pegaInput.value > meuNumero) {
+				alert("Não foi dessa vez! Esse número é maior que o meu.");
+			}
+
+			if(pegaInput.value < meuNumero) {
+				alert("Não foi dessa vez! Esse número é menor que o meu.");
+			} 
+
+		}
+
+		pegaInput.value = "";  			// Limpa o conteúdo da caixa 
+		pegaInput.focus();				// Cria foco no campo de entrada
+	}
+
+	var reconheceBotao = document.querySelector("button")
+	reconheceBotao.onclick = compara; 
+
+	// CUIDADO: se chamar a função usando parenteses, a ação é executada, mesmo sem o clique do botão. Para que a função seja executada somente com o clique, deve-se omitir os parentes para que o "onclick" entenda que é preciso clicar para executar.
+
+    
+</script>

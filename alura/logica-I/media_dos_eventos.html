@@ -1,0 +1,32 @@
+<meta charset="utf-8">
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br><br>");
+	}
+
+	function mostra(texto) {
+		document.write(texto);
+		pulaLinha();
+	}
+
+var numFamiliares = parseInt(prompt("Digite o número de familiares: "));
+var contaFamiliares = 0;
+var idade = 0;
+
+if(isNaN(numFamiliares)) {
+	while(isNaN(numFamiliares)) {
+		var numFamiliares = parseInt(prompt("Por favor, digite um número. "));
+	}
+} else {
+	while(contaFamiliares < numFamiliares) {
+		idade = idade + parseInt(prompt("Digite uma idade: "));
+		contaFamiliares++;
+	}
+}
+	
+mostra("A média das idades dos familiares é " + (idade / numFamiliares));
+mostra("FIM")
+
+</script>
