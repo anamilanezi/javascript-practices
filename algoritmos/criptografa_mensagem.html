@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criptografar mensagem.</title>
+    <style>
+
+        body {
+                text-align: center;                        
+                place-content: center;
+                background-color: #FDDF7E;
+                font-family: monospace;
+                color: #815CAB; 
+            }
+            .conteudo {
+                text-align: center;
+                background-color: #815CAB;
+                padding: 20px;
+            }
+    
+            h2 {
+                width: 60%;
+                margin: 10px auto;
+                font-size: 22px;
+            }
+            
+    
+            h3 {
+                margin: 0;
+                font-size: 20px;
+                color: #FFEAA5
+            }
+    
+            button {
+                font-family: monospace;
+            }
+    
+            .resultado {
+                background-color: #FDDF7E;
+                color: #815CAB;
+                width: 250px;
+                display: inline-block;
+                padding: 10px;
+                border: 2px solid #A789CA;
+                border-radius: 10px;
+            }
+    
+    </style>
+</head>
+<body>
+
+    <h2>Digite a mensagem que deseja criptografar!</h2>
+    <div class="conteudo">
+
+            <textarea rows="10" cols="30" placeholder="digite aqui sua mensagem" wrap="hard"></textarea>
+            <br>
+            <button id="criptografar">criptografar</button>            
+            <button id="limpar">limpar</button><br><br>
+            <br><br>
+            <h3 class="resultado">SUA MENSAGEM</h3>
+    </div> 
+
+<script>
+
+    var frase = document.querySelector("textarea");
+    var botaoCriptografar = document.querySelector("#criptografar");
+    var resultado = document.querySelector(".resultado")
+
+    // Função para criptografar
+
+    function cripto() {
+
+    // Inicializa array para receber letras
+        var fraseArray = []; 
+
+    // Armazena cada letra/espaço da frase como elemento da array 
+        for(var i = 0; i < frase.value.length; i++) {
+            fraseArray.push(frase.value[i])
+        }
+
+    // Verifica cada elemento da array e substitui por código
+        for(var u = 0; u < fraseArray.length; u++) {
+
+            if(fraseArray[u] == "a"){
+                fraseArray[u] = "ai";
+            }
+            if(fraseArray[u] == "e"){
+                fraseArray[u] = "enter";
+            }
+            if(fraseArray[u] == "i"){
+                fraseArray[u] = "imes";
+            } 
+            if(fraseArray[u] == "o"){
+                fraseArray[u] = "ober";
+            } 
+            if(fraseArray[u] == "u"){
+                fraseArray[u] = "ufat";
+            }
+
+        } 
+
+    // Após codificação, transforma array em string com .join
+        resultado.textContent = fraseArray.join('');
+        frase.value = "";
+    }
+
+    botaoCriptografar.onclick = cripto;
+
+</script>
+
+</body>
+</html>
