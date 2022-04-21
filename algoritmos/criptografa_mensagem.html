@@ -10,13 +10,14 @@
         body {
                 text-align: center;                        
                 place-content: center;
-                background-color: #FDDF7E;
+                background-color: #DDDDDD;
                 font-family: monospace;
-                color: #815CAB; 
+                color: #06113C; 
             }
             .conteudo {
+                
                 text-align: center;
-                background-color: #815CAB;
+                background-color: #06113C;
                 padding: 20px;
             }
     
@@ -24,27 +25,39 @@
                 width: 60%;
                 margin: 10px auto;
                 font-size: 22px;
+                padding: 20px
             }
             
-    
             h3 {
-                margin: 0;
-                font-size: 20px;
-                color: #FFEAA5
+            margin: 0;
+            font-size: 20px;
+            color: #FFEAA5
             }
     
             button {
+                margin-top: 10px;
+                width: 100px;
+                padding: 5px;
                 font-family: monospace;
             }
     
             .resultado {
-                background-color: #FDDF7E;
-                color: #815CAB;
-                width: 250px;
+                background-color: #FF8C32;
+                color: #06113C;
+                width: 350px;
                 display: inline-block;
                 padding: 10px;
-                border: 2px solid #A789CA;
+                border: 2px solid #EEEEEE;
                 border-radius: 10px;
+            }
+
+            textarea {
+                font-size: 16px;
+                width: 350px;
+                height: 100px;
+                border-radius: 10px;
+                padding: 10px;
+
             }
     
     </style>
@@ -54,22 +67,25 @@
     <h2>Digite a mensagem que deseja criptografar!</h2>
     <div class="conteudo">
 
-            <textarea rows="10" cols="30" placeholder="digite aqui sua mensagem" wrap="hard"></textarea>
+            <textarea placeholder="Digite aqui sua mensagem" wrap="hard"></textarea>
             <br>
-            <button id="criptografar">criptografar</button>            
-            <button id="limpar">limpar</button><br><br>
+            <button id="criptografar">CRIPTOGRAFAR</button>            
             <br><br>
-            <h3 class="resultado">SUA MENSAGEM</h3>
+            <h3 class="resultado">Sua mensagem criptografada aparecerá aqui!</h3><br>
+            <button id="limpar">limpar</button><br>
     </div> 
 
 <script>
 
     var frase = document.querySelector("textarea");
     var botaoCriptografar = document.querySelector("#criptografar");
+    var botaoLimpar = document.querySelector("#limpar");
     var resultado = document.querySelector(".resultado")
 
+    function limpar() {
+        resultado.textContent = "Sua mensagem criptografada aparecerá aqui!"
+    }
     // Função para criptografar
-
     function cripto() {
 
     // Inicializa array para receber letras
@@ -107,6 +123,7 @@
     }
 
     botaoCriptografar.onclick = cripto;
+    botaoLimpar.onclick = limpar;
 
 </script>
 
