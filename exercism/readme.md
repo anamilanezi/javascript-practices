@@ -1,1 +1,0 @@
-## Diretório criado para publicar resolução dos exercícios criados na trilha JavaScript na plataforma Exercism
